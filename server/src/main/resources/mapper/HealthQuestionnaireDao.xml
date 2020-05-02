@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yuheng.server.dao.HealthQuestionnaireDao">
+    <resultMap id="BaseResultMap" type="cn.yuheng.server.pojo.HealthQuestionnaire">
+        <!--@mbg.generated-->
+        <!--@Table health_questionnaire-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="time" jdbcType="TIMESTAMP" property="time"/>
+        <result column="userid" jdbcType="INTEGER" property="userid"/>
+        <result column="height" jdbcType="DECIMAL" property="height"/>
+        <result column="weight" jdbcType="DECIMAL" property="weight"/>
+        <result column="waist_circumference" jdbcType="DECIMAL" property="waistCircumference"/>
+        <result column="body_temperature" jdbcType="DECIMAL" property="bodyTemperature"/>
+        <result column="heart_rate" jdbcType="DECIMAL" property="heartRate"/>
+        <result column="lung_capacity" jdbcType="INTEGER" property="lungCapacity"/>
+        <result column="blood_pressure" jdbcType="DECIMAL" property="bloodPressure"/>
+        <result column="blood_sugar" jdbcType="DECIMAL" property="bloodSugar"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `time`, userid, height, weight, waist_circumference, body_temperature, heart_rate,
+        lung_capacity, blood_pressure, blood_sugar
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from health_questionnaire
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from health_questionnaire
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.yuheng.server.pojo.HealthQuestionnaire"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into health_questionnaire (`time`, userid, height,
+        weight, waist_circumference, body_temperature,
+        heart_rate, lung_capacity, blood_pressure,
+        blood_sugar)
+        values (#{time,jdbcType=TIMESTAMP}, #{userid,jdbcType=INTEGER}, #{height,jdbcType=DECIMAL},
+        #{weight,jdbcType=DECIMAL}, #{waistCircumference,jdbcType=DECIMAL}, #{bodyTemperature,jdbcType=DECIMAL},
+        #{heartRate,jdbcType=DECIMAL}, #{lungCapacity,jdbcType=INTEGER}, #{bloodPressure,jdbcType=DECIMAL},
+        #{bloodSugar,jdbcType=DECIMAL})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="cn.yuheng.server.pojo.HealthQuestionnaire" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into health_questionnaire
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="time != null">
+                `time`,
+            </if>
+            <if test="userid != null">
+                userid,
+            </if>
+            <if test="height != null">
+                height,
+            </if>
+            <if test="weight != null">
+                weight,
+            </if>
+            <if test="waistCircumference != null">
+                waist_circumference,
+            </if>
+            <if test="bodyTemperature != null">
+                body_temperature,
+            </if>
+            <if test="heartRate != null">
+                heart_rate,
+            </if>
+            <if test="lungCapacity != null">
+                lung_capacity,
+            </if>
+            <if test="bloodPressure != null">
+                blood_pressure,
+            </if>
+            <if test="bloodSugar != null">
+                blood_sugar,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="time != null">
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="height != null">
+                #{height,jdbcType=DECIMAL},
+            </if>
+            <if test="weight != null">
+                #{weight,jdbcType=DECIMAL},
+            </if>
+            <if test="waistCircumference != null">
+                #{waistCircumference,jdbcType=DECIMAL},
+            </if>
+            <if test="bodyTemperature != null">
+                #{bodyTemperature,jdbcType=DECIMAL},
+            </if>
+            <if test="heartRate != null">
+                #{heartRate,jdbcType=DECIMAL},
+            </if>
+            <if test="lungCapacity != null">
+                #{lungCapacity,jdbcType=INTEGER},
+            </if>
+            <if test="bloodPressure != null">
+                #{bloodPressure,jdbcType=DECIMAL},
+            </if>
+            <if test="bloodSugar != null">
+                #{bloodSugar,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.yuheng.server.pojo.HealthQuestionnaire">
+        <!--@mbg.generated-->
+        update health_questionnaire
+        <set>
+            <if test="time != null">
+                `time` = #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userid != null">
+                userid = #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="height != null">
+                height = #{height,jdbcType=DECIMAL},
+            </if>
+            <if test="weight != null">
+                weight = #{weight,jdbcType=DECIMAL},
+            </if>
+            <if test="waistCircumference != null">
+                waist_circumference = #{waistCircumference,jdbcType=DECIMAL},
+            </if>
+            <if test="bodyTemperature != null">
+                body_temperature = #{bodyTemperature,jdbcType=DECIMAL},
+            </if>
+            <if test="heartRate != null">
+                heart_rate = #{heartRate,jdbcType=DECIMAL},
+            </if>
+            <if test="lungCapacity != null">
+                lung_capacity = #{lungCapacity,jdbcType=INTEGER},
+            </if>
+            <if test="bloodPressure != null">
+                blood_pressure = #{bloodPressure,jdbcType=DECIMAL},
+            </if>
+            <if test="bloodSugar != null">
+                blood_sugar = #{bloodSugar,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.yuheng.server.pojo.HealthQuestionnaire">
+        <!--@mbg.generated-->
+        update health_questionnaire
+        set `time` = #{time,jdbcType=TIMESTAMP},
+        userid = #{userid,jdbcType=INTEGER},
+        height = #{height,jdbcType=DECIMAL},
+        weight = #{weight,jdbcType=DECIMAL},
+        waist_circumference = #{waistCircumference,jdbcType=DECIMAL},
+        body_temperature = #{bodyTemperature,jdbcType=DECIMAL},
+        heart_rate = #{heartRate,jdbcType=DECIMAL},
+        lung_capacity = #{lungCapacity,jdbcType=INTEGER},
+        blood_pressure = #{bloodPressure,jdbcType=DECIMAL},
+        blood_sugar = #{bloodSugar,jdbcType=DECIMAL}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="selectByUserAndTime" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from health_questionnaire
+        where id = #{userid,jdbcType=INTEGER}
+        and time between #{begin,jdbcType=TIMESTAMP} and #{end,jdbcType=TIMESTAMP}
+    </select>
+</mapper>
