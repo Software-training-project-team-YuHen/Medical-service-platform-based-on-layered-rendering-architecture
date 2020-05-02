@@ -1,10 +1,10 @@
-package cn.yuheng.server.dao;
+package cn.yuheng.server.mapper;
 
-import cn.yuheng.server.pojo.LoginHistory;
+import cn.yuheng.server.model.LoginHistory;
 
 import java.util.List;
 
-public interface LoginHistoryDao {
+public interface LoginHistoryMapper {
     int insert(LoginHistory record);
 
     int insertSelective(LoginHistory record);

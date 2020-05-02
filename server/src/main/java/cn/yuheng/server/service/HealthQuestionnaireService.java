@@ -1,7 +1,7 @@
 package cn.yuheng.server.service;
 
-import cn.yuheng.server.dao.HealthQuestionnaireDao;
-import cn.yuheng.server.pojo.HealthQuestionnaire;
+import cn.yuheng.server.mapper.HealthQuestionnaireMapper;
+import cn.yuheng.server.model.HealthQuestionnaire;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 public class HealthQuestionnaireService {
 
     @Resource
-    private HealthQuestionnaireDao healthQuestionnaireMapper;
+    private HealthQuestionnaireMapper healthQuestionnaireMapper;
 
 
     public boolean deleteByID(Integer id) {

@@ -1,6 +1,6 @@
 package cn.yuheng.server.controller;
 
-import cn.yuheng.server.pojo.User;
+import cn.yuheng.server.model.User;
 import cn.yuheng.server.service.MailService;
 import cn.yuheng.server.service.UserService;
 import cn.yuheng.server.util.Result;

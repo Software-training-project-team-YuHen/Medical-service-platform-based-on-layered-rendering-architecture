@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.yuheng.server.dao.HealthQuestionnaireDao">
-    <resultMap id="BaseResultMap" type="cn.yuheng.server.pojo.HealthQuestionnaire">
+<mapper namespace="cn.yuheng.server.mapper.HealthQuestionnaireMapper">
+    <resultMap id="BaseResultMap" type="cn.yuheng.server.model.HealthQuestionnaire">
         <!--@mbg.generated-->
         <!--@Table health_questionnaire-->
         <id column="id" jdbcType="INTEGER" property="id"/>
@@ -33,7 +33,7 @@
         delete from health_questionnaire
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.yuheng.server.pojo.HealthQuestionnaire"
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.yuheng.server.model.HealthQuestionnaire"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into health_questionnaire (`time`, userid, height,
@@ -46,7 +46,7 @@
         #{bloodSugar,jdbcType=DECIMAL})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id"
-            parameterType="cn.yuheng.server.pojo.HealthQuestionnaire" useGeneratedKeys="true">
+            parameterType="cn.yuheng.server.model.HealthQuestionnaire" useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into health_questionnaire
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -114,7 +114,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="cn.yuheng.server.pojo.HealthQuestionnaire">
+    <update id="updateByPrimaryKeySelective" parameterType="cn.yuheng.server.model.HealthQuestionnaire">
         <!--@mbg.generated-->
         update health_questionnaire
         <set>
@@ -151,7 +151,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="cn.yuheng.server.pojo.HealthQuestionnaire">
+    <update id="updateByPrimaryKey" parameterType="cn.yuheng.server.model.HealthQuestionnaire">
         <!--@mbg.generated-->
         update health_questionnaire
         set `time` = #{time,jdbcType=TIMESTAMP},

@@ -1,8 +1,8 @@
-package cn.yuheng.server.dao;
+package cn.yuheng.server.mapper;
 
-import cn.yuheng.server.pojo.User;
+import cn.yuheng.server.model.User;
 
-public interface UserDao {
+public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);

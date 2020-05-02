@@ -1,7 +1,7 @@
 package cn.yuheng.server.service;
 
-import cn.yuheng.server.dao.UserDao;
-import cn.yuheng.server.pojo.User;
+import cn.yuheng.server.mapper.UserMapper;
+import cn.yuheng.server.model.User;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     @Setter
-    private UserDao userDao;
+    private UserMapper userDao;
 
     public User getByID(Integer id) {
         return userDao.selectByID(id);

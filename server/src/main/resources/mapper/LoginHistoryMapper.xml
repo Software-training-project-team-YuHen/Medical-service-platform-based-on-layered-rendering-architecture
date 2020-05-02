@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.yuheng.server.dao.LoginHistoryDao">
-    <resultMap id="BaseResultMap" type="cn.yuheng.server.pojo.LoginHistory">
+<mapper namespace="cn.yuheng.server.mapper.LoginHistoryMapper">
+    <resultMap id="BaseResultMap" type="cn.yuheng.server.model.LoginHistory">
         <result column="user" jdbcType="INTEGER" property="user"/>
         <result column="time" jdbcType="TIMESTAMP" property="time"/>
     </resultMap>
-    <insert id="insert" parameterType="cn.yuheng.server.pojo.LoginHistory">
-    insert into login_history (`user`, `time`)
-    values (#{user,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP})
-  </insert>
-    <insert id="insertSelective" parameterType="cn.yuheng.server.pojo.LoginHistory">
+    <insert id="insert" parameterType="cn.yuheng.server.model.LoginHistory">
+        insert into login_history (`user`, `time`)
+        values (#{user,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="cn.yuheng.server.model.LoginHistory">
         insert into login_history
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="user != null">
@@ -28,7 +28,7 @@
             </if>
         </trim>
     </insert>
-    <select id="getByUser" resultType="cn.yuheng.server.pojo.LoginHistory">
-    select `user`, `time` from login_history where user=#{user,jdbcType=INTEGER}
-  </select>
+    <select id="getByUser" resultType="cn.yuheng.server.model.LoginHistory">
+        select `user`, `time` from login_history where user=#{user,jdbcType=INTEGER}
+    </select>
 </mapper>

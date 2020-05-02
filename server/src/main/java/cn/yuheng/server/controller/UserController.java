@@ -1,6 +1,6 @@
 package cn.yuheng.server.controller;
 
-import cn.yuheng.server.pojo.User;
+import cn.yuheng.server.model.User;
 import cn.yuheng.server.service.LoginService;
 import cn.yuheng.server.service.UserService;
 import cn.yuheng.server.util.PasswordUtil;
@@ -35,6 +35,13 @@ public class UserController {
     @Autowired
     @Setter
     private LoginService loginService;
+
+
+    @GetMapping(value = "/api/user/remove")
+    public Result<User> removeUser(Integer id) {
+        userService.removeUser(id);
+        return Result.success();
+    }
 
     @GetMapping(value = "/api/user/get")
     public Result<User> getUser(Integer id) {

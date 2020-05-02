@@ -1,7 +1,7 @@
 package cn.yuheng.server.service;
 
-import cn.yuheng.server.dao.LoginHistoryDao;
-import cn.yuheng.server.pojo.LoginHistory;
+import cn.yuheng.server.mapper.LoginHistoryMapper;
+import cn.yuheng.server.model.LoginHistory;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class LoginService {
     @Setter
     @Autowired
-    private LoginHistoryDao loginHistoryDao;
+    private LoginHistoryMapper loginHistoryDao;
 
     public boolean addLoginHistory(Integer user) {
         LoginHistory loginHistory = new LoginHistory();

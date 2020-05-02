@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.yuheng.server.dao.ImageDao">
-    <resultMap id="BaseResultMap" type="cn.yuheng.server.pojo.Image">
+<mapper namespace="cn.yuheng.server.mapper.ImageMapper">
+    <resultMap id="BaseResultMap" type="cn.yuheng.server.model.Image">
         <id column="id" jdbcType="INTEGER" property="id"/>
     </resultMap>
-    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.yuheng.server.pojo.Image">
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.yuheng.server.model.Image">
         <result column="image" jdbcType="BLOB" property="image"/>
     </resultMap>
     <sql id="Base_Column_List">
@@ -25,12 +25,12 @@
     delete from image
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.yuheng.server.pojo.Image"
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.yuheng.server.model.Image"
             useGeneratedKeys="true">
-    insert into image (image)
-    values (#{image,jdbcType=BLOB})
-  </insert>
-    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.yuheng.server.pojo.Image"
+        insert into image (image)
+        values (#{image,jdbcType=BLOB})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.yuheng.server.model.Image"
             useGeneratedKeys="true">
         insert into image
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -44,7 +44,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="cn.yuheng.server.pojo.Image">
+    <update id="updateByPrimaryKeySelective" parameterType="cn.yuheng.server.model.Image">
         update image
         <set>
             <if test="image != null">
@@ -53,9 +53,9 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.yuheng.server.pojo.Image">
-    update image
-    set image = #{image,jdbcType=BLOB}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.yuheng.server.model.Image">
+        update image
+        set image = #{image,jdbcType=BLOB}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

@@ -1,6 +1,6 @@
 package cn.yuheng.server.controller;
 
-import cn.yuheng.server.pojo.Image;
+import cn.yuheng.server.model.Image;
 import cn.yuheng.server.service.ImageService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;

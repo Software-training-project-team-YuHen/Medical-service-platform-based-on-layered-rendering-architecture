@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.yuheng.server.dao.UserDao">
-    <resultMap id="BaseResultMap" type="cn.yuheng.server.pojo.User">
+<mapper namespace="cn.yuheng.server.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="cn.yuheng.server.model.User">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="sex" jdbcType="OTHER" property="sex"/>
@@ -24,13 +24,13 @@
         from user
         where id = #{id,jdbcType=INTEGER}
     </select>
-    <select id="selectByEmail" resultType="cn.yuheng.server.pojo.User">
+    <select id="selectByEmail" resultType="cn.yuheng.server.model.User">
         select
         <include refid="Base_Column_List"/>
         from user
         where email = #{email,jdbcType=VARCHAR}
     </select>
-    <select id="selectByWeChatID" resultType="cn.yuheng.server.pojo.User">
+    <select id="selectByWeChatID" resultType="cn.yuheng.server.model.User">
         select
         <include refid="Base_Column_List"/>
         from user
@@ -40,17 +40,17 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="cn.yuheng.server.pojo.User">
-    insert into user (id, `name`, sex, 
-      email, wechat_id, head_portrait_id, 
-      `password`, registration_time, phone, 
-      `type`, `status`)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=OTHER}, 
-      #{email,jdbcType=VARCHAR}, #{wechatId,jdbcType=VARCHAR}, #{headPortraitId,jdbcType=INTEGER}, 
-      #{password,jdbcType=VARCHAR}, #{registrationTime,jdbcType=TIMESTAMP}, #{phone,jdbcType=VARCHAR}, 
-      #{type,jdbcType=OTHER}, #{status,jdbcType=VARCHAR})
-  </insert>
-    <insert id="insertSelective" parameterType="cn.yuheng.server.pojo.User">
+    <insert id="insert" parameterType="cn.yuheng.server.model.User">
+        insert into user (id, `name`, sex,
+        email, wechat_id, head_portrait_id,
+        `password`, registration_time, phone,
+        `type`, `status`)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=OTHER},
+        #{email,jdbcType=VARCHAR}, #{wechatId,jdbcType=VARCHAR}, #{headPortraitId,jdbcType=INTEGER},
+        #{password,jdbcType=VARCHAR}, #{registrationTime,jdbcType=TIMESTAMP}, #{phone,jdbcType=VARCHAR},
+        #{type,jdbcType=OTHER}, #{status,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="cn.yuheng.server.model.User">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -123,7 +123,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="cn.yuheng.server.pojo.User">
+    <update id="updateByPrimaryKeySelective" parameterType="cn.yuheng.server.model.User">
         update user
         <set>
             <if test="name != null">
@@ -159,17 +159,17 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="cn.yuheng.server.pojo.User">
-    update user
-    set `name` = #{name,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=OTHER},
-      email = #{email,jdbcType=VARCHAR},
-      wechat_id = #{wechatId,jdbcType=VARCHAR},
-      head_portrait_id = #{headPortraitId,jdbcType=INTEGER},
-      `password` = #{password,jdbcType=VARCHAR},
-      registration_time = #{registrationTime,jdbcType=TIMESTAMP},
-      phone = #{phone,jdbcType=VARCHAR},
-      `type` = #{type,jdbcType=OTHER},
+    <update id="updateByPrimaryKey" parameterType="cn.yuheng.server.model.User">
+        update user
+        set `name` = #{name,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=OTHER},
+        email = #{email,jdbcType=VARCHAR},
+        wechat_id = #{wechatId,jdbcType=VARCHAR},
+        head_portrait_id = #{headPortraitId,jdbcType=INTEGER},
+        `password` = #{password,jdbcType=VARCHAR},
+        registration_time = #{registrationTime,jdbcType=TIMESTAMP},
+        phone = #{phone,jdbcType=VARCHAR},
+        `type` = #{type,jdbcType=OTHER},
       `status` = #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

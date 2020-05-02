@@ -1,6 +1,6 @@
-package cn.yuheng.server.dao;
+package cn.yuheng.server.mapper;
 
-import cn.yuheng.server.pojo.HealthQuestionnaire;
+import cn.yuheng.server.model.HealthQuestionnaire;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.Date;
  * @date 2020/5/2 上午9:59
  */
 
-public interface HealthQuestionnaireDao {
+public interface HealthQuestionnaireMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(HealthQuestionnaire record);

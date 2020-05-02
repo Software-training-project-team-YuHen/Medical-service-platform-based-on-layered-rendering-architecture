@@ -1,8 +1,8 @@
-package cn.yuheng.server.dao;
+package cn.yuheng.server.mapper;
 
-import cn.yuheng.server.pojo.Image;
+import cn.yuheng.server.model.Image;
 
-public interface ImageDao {
+public interface ImageMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Image record);

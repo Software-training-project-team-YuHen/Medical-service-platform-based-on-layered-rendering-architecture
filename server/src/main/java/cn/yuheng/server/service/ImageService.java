@@ -1,7 +1,7 @@
 package cn.yuheng.server.service;
 
-import cn.yuheng.server.dao.ImageDao;
-import cn.yuheng.server.pojo.Image;
+import cn.yuheng.server.mapper.ImageMapper;
+import cn.yuheng.server.model.Image;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class ImageService {
     @Autowired
     @Setter
-    private ImageDao imageDao;
+    private ImageMapper imageDao;
 
     public Image getByID(Integer id) {
         Image image = imageDao.selectByPrimaryKey(id);

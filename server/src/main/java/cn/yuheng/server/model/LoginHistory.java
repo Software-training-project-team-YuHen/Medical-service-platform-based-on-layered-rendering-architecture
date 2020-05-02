@@ -1,4 +1,4 @@
-package cn.yuheng.server.pojo;
+package cn.yuheng.server.model;
 
 import lombok.Data;
 
