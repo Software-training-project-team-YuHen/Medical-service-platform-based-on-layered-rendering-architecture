@@ -1,176 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.yuheng.server.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="cn.yuheng.server.model.User">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="sex" jdbcType="OTHER" property="sex"/>
-        <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="wechat_id" jdbcType="VARCHAR" property="wechatId"/>
-        <result column="head_portrait_id" jdbcType="INTEGER" property="headPortraitId"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="registration_time" jdbcType="TIMESTAMP" property="registrationTime"/>
-        <result column="phone" jdbcType="VARCHAR" property="phone"/>
-        <result column="type" jdbcType="OTHER" property="type"/>
-        <result column="status" jdbcType="VARCHAR" property="status"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-    id, `name`, sex, email, wechat_id, head_portrait_id, `password`, registration_time, 
-    phone, `type`, `status`
+  <resultMap id="BaseResultMap" type="cn.yuheng.server.model.User">
+    <!--@mbg.generated-->
+    <!--@Table `user`-->
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="sex" jdbcType="OTHER" property="sex"/>
+    <result column="email" jdbcType="VARCHAR" property="email"/>
+    <result column="head_portrait_id" jdbcType="INTEGER" property="headPortraitId"/>
+    <result column="password" jdbcType="VARCHAR" property="password"/>
+    <result column="registration_time" jdbcType="TIMESTAMP" property="registrationTime"/>
+    <result column="phone" jdbcType="VARCHAR" property="phone"/>
+    <result column="type" jdbcType="OTHER" property="type"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
+    <result column="wx_openid" jdbcType="VARCHAR" property="wxOpenid"/>
+    <result column="wx_session" jdbcType="VARCHAR" property="wxSession"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, sex, email, head_portrait_id, `password`, registration_time, phone, `type`,
+    `status`, wx_openid, wx_session
   </sql>
-    <select id="selectByID" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-    <select id="selectByEmail" resultType="cn.yuheng.server.model.User">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where email = #{email,jdbcType=VARCHAR}
-    </select>
-    <select id="selectByWeChatID" resultType="cn.yuheng.server.model.User">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where wechat_id = #{wechatID,jdbcType=VARCHAR}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List"/>
+    from `user`
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from `user`
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="cn.yuheng.server.model.User">
-        insert into user (id, `name`, sex,
-        email, wechat_id, head_portrait_id,
-        `password`, registration_time, phone,
-        `type`, `status`)
-        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=OTHER},
-        #{email,jdbcType=VARCHAR}, #{wechatId,jdbcType=VARCHAR}, #{headPortraitId,jdbcType=INTEGER},
-        #{password,jdbcType=VARCHAR}, #{registrationTime,jdbcType=TIMESTAMP}, #{phone,jdbcType=VARCHAR},
-        #{type,jdbcType=OTHER}, #{status,jdbcType=VARCHAR})
-    </insert>
-    <insert id="insertSelective" parameterType="cn.yuheng.server.model.User">
-        insert into user
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
-            <if test="name != null">
-                `name`,
-            </if>
-            <if test="sex != null">
-                sex,
-            </if>
-            <if test="email != null">
-                email,
-            </if>
-            <if test="wechatId != null">
-                wechat_id,
-            </if>
-            <if test="headPortraitId != null">
-                head_portrait_id,
-            </if>
-            <if test="password != null">
-                `password`,
-            </if>
-            <if test="registrationTime != null">
-                registration_time,
-            </if>
-            <if test="phone != null">
-                phone,
-            </if>
-            <if test="type != null">
-                `type`,
-            </if>
-            <if test="status != null">
-                `status`,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="name != null">
-                #{name,jdbcType=VARCHAR},
-            </if>
-            <if test="sex != null">
-                #{sex,jdbcType=OTHER},
-            </if>
-            <if test="email != null">
-                #{email,jdbcType=VARCHAR},
-            </if>
-            <if test="wechatId != null">
-                #{wechatId,jdbcType=VARCHAR},
-            </if>
-            <if test="headPortraitId != null">
-                #{headPortraitId,jdbcType=INTEGER},
-            </if>
-            <if test="password != null">
-                #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="registrationTime != null">
-                #{registrationTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="phone != null">
-                #{phone,jdbcType=VARCHAR},
-            </if>
-            <if test="type != null">
-                #{type,jdbcType=OTHER},
-            </if>
-            <if test="status != null">
-                #{status,jdbcType=VARCHAR},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="cn.yuheng.server.model.User">
-        update user
-        <set>
-            <if test="name != null">
-                `name` = #{name,jdbcType=VARCHAR},
-            </if>
-            <if test="sex != null">
-                sex = #{sex,jdbcType=OTHER},
-            </if>
-            <if test="email != null">
-                email = #{email,jdbcType=VARCHAR},
-            </if>
-            <if test="wechatId != null">
-                wechat_id = #{wechatId,jdbcType=VARCHAR},
-            </if>
-            <if test="headPortraitId != null">
-                head_portrait_id = #{headPortraitId,jdbcType=INTEGER},
-            </if>
-            <if test="password != null">
-                `password` = #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="registrationTime != null">
-                registration_time = #{registrationTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="phone != null">
-                phone = #{phone,jdbcType=VARCHAR},
-            </if>
-            <if test="type != null">
-                `type` = #{type,jdbcType=OTHER},
-            </if>
-            <if test="status != null">
-                `status` = #{status,jdbcType=VARCHAR},
-            </if>
-        </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="cn.yuheng.server.model.User">
-        update user
-        set `name` = #{name,jdbcType=VARCHAR},
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.yuheng.server.model.User"
+          useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `user` (`name`, sex, email,
+    head_portrait_id, `password`, registration_time,
+    phone, `type`, `status`,
+    wx_openid, wx_session)
+    values (#{name,jdbcType=VARCHAR}, #{sex,jdbcType=OTHER}, #{email,jdbcType=VARCHAR},
+    #{headPortraitId,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{registrationTime,jdbcType=TIMESTAMP},
+    #{phone,jdbcType=VARCHAR}, #{type,jdbcType=OTHER}, #{status,jdbcType=VARCHAR},
+    #{wxOpenid,jdbcType=VARCHAR}, #{wxSession,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.yuheng.server.model.User"
+          useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `user`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="headPortraitId != null">
+        head_portrait_id,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="registrationTime != null">
+        registration_time,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="wxOpenid != null">
+        wx_openid,
+      </if>
+      <if test="wxSession != null">
+        wx_session,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=OTHER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortraitId != null">
+        #{headPortraitId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationTime != null">
+        #{registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=OTHER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenid != null">
+        #{wxOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxSession != null">
+        #{wxSession,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.yuheng.server.model.User">
+    <!--@mbg.generated-->
+    update `user`
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
         sex = #{sex,jdbcType=OTHER},
+      </if>
+      <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
-        wechat_id = #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortraitId != null">
         head_portrait_id = #{headPortraitId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
         `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationTime != null">
         registration_time = #{registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
         `type` = #{type,jdbcType=OTHER},
-      `status` = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenid != null">
+        wx_openid = #{wxOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxSession != null">
+        wx_session = #{wxSession,jdbcType=VARCHAR},
+      </if>
+    </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateByPrimaryKey" parameterType="cn.yuheng.server.model.User">
+    <!--@mbg.generated-->
+    update `user`
+    set `name` = #{name,jdbcType=VARCHAR},
+    sex = #{sex,jdbcType=OTHER},
+    email = #{email,jdbcType=VARCHAR},
+    head_portrait_id = #{headPortraitId,jdbcType=INTEGER},
+    `password` = #{password,jdbcType=VARCHAR},
+    registration_time = #{registrationTime,jdbcType=TIMESTAMP},
+    phone = #{phone,jdbcType=VARCHAR},
+    `type` = #{type,jdbcType=OTHER},
+    `status` = #{status,jdbcType=VARCHAR},
+    wx_openid = #{wxOpenid,jdbcType=VARCHAR},
+    wx_session = #{wxSession,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--auto generated by MybatisCodeHelper on 2020-05-02-->
+  <select id="selectByEmail" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from `user`
+    where email=#{email,jdbcType=VARCHAR}
+  </select>
+
+  <!--auto generated by MybatisCodeHelper on 2020-05-02-->
+  <select id="selectByWxOpenid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from `user`
+    where wx_openid=#{wxOpenid,jdbcType=VARCHAR}
+  </select>
+
+  <!--auto generated by MybatisCodeHelper on 2020-05-02-->
+  <select id="selectByWxSession" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from `user`
+    where wx_session=#{wxSession,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

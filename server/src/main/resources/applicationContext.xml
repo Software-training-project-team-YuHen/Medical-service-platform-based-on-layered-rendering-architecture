@@ -41,4 +41,7 @@
     <!--            <bean class="cn.yuheng.server.interceptor.LoginInterceptor"/>-->
     <!--        </mvc:interceptor>-->
     <!--    </mvc:interceptors>-->
+    <bean class="cn.yuheng.server.controller.WXLoginController">
+        <property name="APPID" value="APPID"/>
+    </bean>
 </beans>

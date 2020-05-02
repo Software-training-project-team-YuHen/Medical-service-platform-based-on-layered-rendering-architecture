@@ -18,15 +18,11 @@ public class UserService {
     private UserMapper userDao;
 
     public User getByID(Integer id) {
-        return userDao.selectByID(id);
+        return userDao.selectByPrimaryKey(id);
     }
 
     public User getByEmail(String email) {
         return userDao.selectByEmail(email);
-    }
-
-    public User getByWeChatID(String wechatID) {
-        return userDao.selectByWeChatID(wechatID);
     }
 
     public boolean addUser(User user) {
