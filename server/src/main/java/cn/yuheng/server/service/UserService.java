@@ -25,6 +25,10 @@ public class UserService {
         return userDao.selectByEmail(email);
     }
 
+    public User getByWXSession(String session) {
+        return userDao.selectByWxSession(session);
+    }
+
     public boolean addUser(User user) {
         int change = userDao.insert(user);
         return change == 1;

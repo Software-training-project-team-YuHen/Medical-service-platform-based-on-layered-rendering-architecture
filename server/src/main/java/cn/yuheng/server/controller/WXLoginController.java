@@ -3,6 +3,7 @@ package cn.yuheng.server.controller;
 import cn.yuheng.server.DTO.SessionDTO;
 import cn.yuheng.server.exception.ErrorCodeException;
 import cn.yuheng.server.model.User;
+import cn.yuheng.server.service.LoginService;
 import cn.yuheng.server.service.UserService;
 import cn.yuheng.server.util.Result;
 import com.alibaba.fastjson.JSON;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -27,6 +29,9 @@ public class WXLoginController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    @Setter
+    private LoginService loginService;
     @Setter
     private String APPID;
     @Setter
@@ -55,6 +60,13 @@ public class WXLoginController {
         }
     }
 
+    @PostMapping(value = "/api/user/login/by-wechat")
+    public Result<User> login(HttpSession session, String WXSession) {
+        User user = userService.getByWXSession(WXSession);
+        login(session, user);
+        return Result.successOrFail(user);
+    }
+
     public SessionDTO jscode2session(String code) {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request request = new Request.Builder()
@@ -73,5 +85,10 @@ public class WXLoginController {
         } catch (IOException e) {
             throw new ErrorCodeException();
         }
+    }
+
+    public void login(HttpSession session, User user) {
+        session.setAttribute("user", user);
+        loginService.addLoginHistory(user.getId());
     }
 }
