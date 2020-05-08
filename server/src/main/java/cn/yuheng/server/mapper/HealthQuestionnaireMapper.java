@@ -4,6 +4,7 @@ import cn.yuheng.server.model.HealthQuestionnaire;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -26,4 +27,7 @@ public interface HealthQuestionnaireMapper {
     int updateByPrimaryKey(HealthQuestionnaire record);
 
     HealthQuestionnaire[] selectByUserAndTime(@Param("userid") Integer userid, @Param("begin") Date begin, @Param("end") Date end);
+
+    List<HealthQuestionnaire> selectByUseridAndTimeBetweenOrderByTimeDesc(@Param("userid") Integer userid, @Param("minTime") Date minTime, @Param("maxTime") Date maxTime);
+
 }

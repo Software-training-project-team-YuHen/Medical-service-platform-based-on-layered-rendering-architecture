@@ -5,6 +5,8 @@ import cn.yuheng.server.model.HealthQuestionnaire;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author 王子陶
@@ -48,4 +50,7 @@ public class HealthQuestionnaireService {
         return 1 == healthQuestionnaireMapper.updateByPrimaryKey(record);
     }
 
+    public List<HealthQuestionnaire> getByIdAndTime(Integer id, Date minTime, Date maxTime) {
+        return healthQuestionnaireMapper.selectByUseridAndTimeBetweenOrderByTimeDesc(id, minTime, maxTime);
+    }
 }
